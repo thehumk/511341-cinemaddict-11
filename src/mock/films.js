@@ -1,7 +1,5 @@
 import {getRandomNumber} from './../util.js';
-import {comments} from './comments.js';
-
-export const films = [];
+import {randomComments} from './comments.js';
 
 const QUANTITY_FILMS = 15;
 
@@ -53,7 +51,9 @@ const getRandomDescription = () => {
   return randomDescription;
 };
 
-export const createRandomFilms = () => {
+const createRandomFilms = () => {
+  const films = [];
+
   for (let i = 0; i < QUANTITY_FILMS; i++) {
     films[i] = {};
     films[i].title = FILMS_TITLE[getRandomNumber(0, FILMS_TITLE.length - 1)];
@@ -70,6 +70,10 @@ export const createRandomFilms = () => {
     films[i].description = getRandomDescription();
     films[i].duration = getRandomNumber(0, 3) + `h ` + getRandomNumber(0, 59) + `m`;
     films[i].genre = [`Musical`, `Western`];
-    films[i].comments = comments;
+    films[i].comments = randomComments;
   }
+
+  return films;
 };
+
+export const randomFilms = createRandomFilms();

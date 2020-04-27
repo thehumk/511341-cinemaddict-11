@@ -1,7 +1,5 @@
 import {getRandomNumber} from './../util.js';
 
-export const comments = [];
-
 let quantityComments = getRandomNumber(0, 5);
 
 const EMOJI = [
@@ -11,7 +9,9 @@ const EMOJI = [
   `images/emoji/angry.png`
 ];
 
-export const createRandomComments = () => {
+const createRandomComments = () => {
+  const comments = [];
+
   for (let i = 0; i < quantityComments; i++) {
     comments[i] = {};
     comments[i].emoji = EMOJI[getRandomNumber(0, EMOJI.length - 1)];
@@ -19,4 +19,8 @@ export const createRandomComments = () => {
     comments[i].author = `Author`;
     comments[i].date = `2019/12/31 23:59`;
   }
+
+  return comments;
 };
+
+export const randomComments = createRandomComments();

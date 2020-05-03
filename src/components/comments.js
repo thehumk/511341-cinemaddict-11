@@ -1,5 +1,23 @@
 import {createElement} from '../util.js';
 
+const createFilmCommentsTemplate = (comment) => {
+  return (
+    `<li class="film-details__comment">
+      <span class="film-details__comment-emoji">
+        <img src="${comment.emoji}" width="55" height="55" alt="emoji-smile">
+      </span>
+      <div>
+        <p class="film-details__comment-text">${comment.text}</p>
+        <p class="film-details__comment-info">
+          <span class="film-details__comment-author">${comment.author}</span>
+          <span class="film-details__comment-day">${comment.date}</span>
+          <button class="film-details__comment-delete">Delete</button>
+        </p>
+      </div>
+    </li>`
+  );
+};
+
 export default class Comments {
   constructor(comment) {
     this._comment = comment;
@@ -7,21 +25,7 @@ export default class Comments {
   }
 
   getTemplate() {
-    return (
-      `<li class="film-details__comment">
-        <span class="film-details__comment-emoji">
-          <img src="${this._comment.emoji}" width="55" height="55" alt="emoji-smile">
-        </span>
-        <div>
-          <p class="film-details__comment-text">${this._comment.text}</p>
-          <p class="film-details__comment-info">
-            <span class="film-details__comment-author">${this._comment.author}</span>
-            <span class="film-details__comment-day">${this._comment.date}</span>
-            <button class="film-details__comment-delete">Delete</button>
-          </p>
-        </div>
-      </li>`
-    );
+    return createFilmCommentsTemplate(this._comment);
   }
 
   getElement() {

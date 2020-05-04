@@ -1,4 +1,6 @@
-export const createFilmCommentsTemplate = (comment) => {
+import {createElement} from '../util.js';
+
+const createFilmCommentsTemplate = (comment) => {
   return (
     `<li class="film-details__comment">
       <span class="film-details__comment-emoji">
@@ -15,3 +17,26 @@ export const createFilmCommentsTemplate = (comment) => {
     </li>`
   );
 };
+
+export default class Comments {
+  constructor(comment) {
+    this._comment = comment;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmCommentsTemplate(this._comment);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

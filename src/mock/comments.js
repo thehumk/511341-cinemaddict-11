@@ -1,4 +1,4 @@
-import {getRandomNumber} from './../util.js';
+import {getRandomNumber} from './../utils/util.js';
 
 let quantityComments = getRandomNumber(0, 5);
 

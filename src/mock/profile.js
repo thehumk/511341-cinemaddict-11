@@ -1,7 +1,3 @@
-export const profile = {
-  avatar: `images/bitmap@2x.png`
-};
-
 export const QUANTITY_ALL_FILMS = 100000;
 
 let watchedFilms = 25;
@@ -28,11 +24,19 @@ const profileRatingTable = [
   }
 ];
 
-export const setProfileRating = () => {
+const getProfile = () => {
+  const profile = {
+    avatar: `images/bitmap@2x.png`
+  };
+
   for (let i = 0; i < profileRatingTable.length; i++) {
     if (watchedFilms >= profileRatingTable[i].quantityFilms && watchedFilms < profileRatingTable[i + 1].quantityFilms) {
       profile.rating = profileRatingTable[i].rating;
       break;
     }
   }
+
+  return profile;
 };
+
+export const profileMock = getProfile();

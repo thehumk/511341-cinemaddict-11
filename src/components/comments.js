@@ -1,4 +1,4 @@
-import {createElement} from '../util.js';
+import AbstractComponent from './abstract-component.js';
 
 const createFilmCommentsTemplate = (comment) => {
   return (
@@ -18,25 +18,13 @@ const createFilmCommentsTemplate = (comment) => {
   );
 };
 
-export default class Comments {
+export default class Comments extends AbstractComponent {
   constructor(comment) {
+    super();
     this._comment = comment;
-    this._element = null;
   }
 
   getTemplate() {
     return createFilmCommentsTemplate(this._comment);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

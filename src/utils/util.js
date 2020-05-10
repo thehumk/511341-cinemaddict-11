@@ -9,10 +9,3 @@ export const createElement = (template) => {
 
   return newElement.firstChild;
 };
-
-export const render = (container, element, place = `beforeend`) => {
-  switch (place) {
-    case `beforeend`:
-      container.append(element);
-  }
-};
